@@ -1,20 +1,85 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# GoldenGym AI
 
-# Run and deploy your AI Studio app
+## AI-Powered Fitness & Gym Management SaaS
 
-This contains everything you need to run your app locally.
+GoldenGym AI is a modern fitness transformation and gym management platform built with React, TypeScript, Firebase, and AI-powered coaching.
 
-View your app in AI Studio: https://ai.studio/apps/f0816586-777c-4ef3-81b9-4ed91aa3fbbb
+### Features
 
-## Run Locally
+* AI Workout Generator
+* AI Diet Planner
+* AI Fitness Coach
+* Fitness Assessment Engine
+* Analytics Dashboard
+* Workout Tracking
+* Water & Sleep Coach
+* Body Measurements Tracking
+* Transformation Roadmap
+* Gamification & Achievements
+* Community System
+* Firebase Authentication
+* Role-Based Access Control
+* Responsive Mobile-First Design
 
-**Prerequisites:**  Node.js
+### Tech Stack
 
+#### Frontend
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+* React 19
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* Zustand
+* React Router
+* Recharts
+
+#### Backend
+
+* Node.js
+* Firebase Authentication
+* Firestore
+* Firebase Storage
+* Firebase Hosting
+
+#### AI
+
+* Gemini API (Current)
+* Groq API (Planned Future Migration)
+
+### Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+### Environment Variables
+
+Create a `.env.local` file:
+
+```env
+GEMINI_API_KEY=your_api_key
+VITE_FIREBASE_API_KEY=your_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+```
+
+### Project Status
+
+Current Version: MVP
+
+Upcoming:
+
+* Groq API Migration
+* Stripe Billing
+* Gym Owner Dashboard Expansion
+* PWA Support
+* Push Notifications
+* Advanced Analytics
+
+### License
+
+MIT License
+
+Built with ❤️ by Tiru Venkatesh
