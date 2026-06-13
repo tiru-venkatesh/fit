@@ -1,0 +1,6 @@
+{
+  "name": "GoldenGym AI",
+  "description": "GoldenGym AI Ultimate — World-class enterprise-grade AI fitness, premium workout planner, dynamic biometrics tracker and comprehensive gym management SaaS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

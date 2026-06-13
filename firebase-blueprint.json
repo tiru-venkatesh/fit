@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a user in the system (either a Gym Client or Gym Owner/Admin).",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user ID matching Auth UID" },
+        "email": { "type": "string", "description": "Verified email address" },
+        "fullName": { "type": "string", "description": "Display name of the user" },
+        "avatarUrl": { "type": "string", "description": "Google avatar URL or custom profile image" },
+        "role": { "type": "string", "enum": ["client", "owner"], "description": "The user role" },
+        "joinedAt": { "type": "string", "format": "date-time", "description": "User creation timestamp" }
+      },
+      "required": ["id", "email", "fullName", "role", "joinedAt"]
+    },
+    "ClientProfile": {
+      "title": "ClientProfile",
+      "description": "Detailed fitness and biometric measurements for normal gym members (clients).",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User identifier" },
+        "fullName": { "type": "string" },
+        "age": { "type": "number" },
+        "gender": { "type": "string", "enum": ["male", "female", "other"] },
+        "dateOfBirth": { "type": "string" },
+        "measurements": {
+          "type": "object",
+          "description": "Height, weight, biological percentages and limbs measurements"
+        },
+        "goals": {
+          "type": "object",
+          "description": "Weight ranges, targeted body fat, and goal kind"
+        },
+        "activityLevel": { "type": "string" },
+        "dietType": { "type": "string" },
+        "allergies": { "type": "array" },
+        "hasGymAccess": { "type": "boolean" },
+        "fitnessLevel": { "type": "string" },
+        "workoutDays": { "type": "array" },
+        "workoutTime": { "type": "string" },
+        "isOnboarded": { "type": "boolean" }
+      },
+      "required": ["userId", "fullName", "isOnboarded"]
+    },
+    "WorkoutSession": {
+      "title": "WorkoutSession",
+      "description": "A workout session logged by a Client or prescribed to them by the Gym Owner/Coach.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string", "description": "The target client UID" },
+        "creatorId": { "type": "string", "description": "Who created this workout (User themselves or Gym Owner)" },
+        "date": { "type": "string", "format": "date-time" },
+        "durationMinutes": { "type": "number" },
+        "caloriesBurned": { "type": "number" },
+        "exercises": { "type": "array", "description": "Exercises, sets, weights and reps list" },
+        "notes": { "type": "string" },
+        "isAssignedByOwner": { "type": "boolean", "description": "Flag to mark if the owner of the gym assigned this workout" }
+      },
+      "required": ["id", "userId", "creatorId", "date", "durationMinutes", "caloriesBurned", "exercises"]
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "Announcements made by Gym Owners/Admin that are visible to all clients.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "ownerId": { "type": "string", "description": "The owner who posted it" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "date": { "type": "string" },
+        "urgency": { "type": "string", "enum": ["normal", "important", "urgent"] }
+      },
+      "required": ["id", "ownerId", "title", "content", "date", "urgency"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Registered gym users mapped by authorization identifier"
+    },
+    "/clientProfiles/{userId}": {
+      "schema": "ClientProfile",
+      "description": "Target fitness indicators and parameters of the gym member client"
+    },
+    "/workouts/{workoutId}": {
+      "schema": "WorkoutSession",
+      "description": "Workout sessions recorded or assigned"
+    },
+    "/announcements/{announcementId}": {
+      "schema": "Announcement",
+      "description": "Gym owner bulletins and administrative posts broadcasted to members"
+    }
+  }
+}
